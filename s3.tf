@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "remote_state_bucket" {
 
   /*
     Note:
-    Currently Terraform will not force destroy a bucket if it contains verionsed files.
+    Currently Terraform will not force destroy a bucket if it contains versioned files.
     All versions will have to be deleted manually first (ie. empty the bucket).
   */
   force_destroy = false
