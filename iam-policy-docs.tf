@@ -109,6 +109,8 @@ data "aws_iam_policy_document" "s3_bucket_ro_access" {
   }
 }
 
+data "aws_caller_identity" "current" {}
+
 /*
 Policy for the DynamoDB table:
 - allows read/write access for all Terraform users
@@ -127,7 +129,7 @@ data "aws_iam_policy_document" "dynamodb_table" {
     ]
 
     resources = [
-      "arn:aws:dynamodb:${var.aws_region}::table/${var.dynamodb_table_name}",
+      "arn:aws:dynamodb:${var.aws_region}:${data.aws_caller_identity.current.account_id}:table/${var.dynamodb_table_name}",
     ]
   }
 }
