@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "s3_bucket_rw_access" {
     ]
 
     resources = [
-      "${aws_kms_key.encryption_key.arn}",
+      aws_kms_key.encryption_key.arn,
     ]
   }
 }
@@ -104,12 +104,13 @@ data "aws_iam_policy_document" "s3_bucket_ro_access" {
     ]
 
     resources = [
-      "${aws_kms_key.encryption_key.arn}",
+      aws_kms_key.encryption_key.arn,
     ]
   }
 }
 
-data "aws_caller_identity" "current" {}
+data "aws_caller_identity" "current" {
+}
 
 /*
 Policy for the DynamoDB table:
@@ -133,3 +134,4 @@ data "aws_iam_policy_document" "dynamodb_table" {
     ]
   }
 }
+

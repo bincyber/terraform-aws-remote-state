@@ -10,5 +10,6 @@ resource "aws_kms_key" "encryption_key" {
 
 resource "aws_kms_alias" "encryption_key" {
   name          = "alias/${var.s3_bucket_name}-encryption-key"
-  target_key_id = "${aws_kms_key.encryption_key.key_id}"
+  target_key_id = aws_kms_key.encryption_key.key_id
 }
+

@@ -14,7 +14,7 @@ The S3 bucket is created with versioning, server-side encryption, and logging en
 
 ## Prerequisites
 
-Terraform version 0.11.0 or newer is required.
+Terraform version 0.12.0 or newer is required.
 
 
 ### Usage
