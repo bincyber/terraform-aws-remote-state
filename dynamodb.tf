@@ -19,4 +19,3 @@ resource "aws_dynamodb_table" "state_locking_table" {
     Terraform = "True"
   }
 }
-

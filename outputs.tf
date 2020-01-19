@@ -53,3 +53,14 @@ output "iam_group_terraform_ro_access_arn" {
   value = aws_iam_group.terraform_ro_access.arn
 }
 
+output "iam_policy_s3_bucket_rw_access_arn" {
+  value = aws_iam_policy.s3_bucket_rw_access.arn
+}
+
+output "iam_policy_s3_bucket_ro_access_arn" {
+  value = aws_iam_policy.s3_bucket_ro_access.arn
+}
+
+output "iam_policy_dynamodb_table_access_arn" {
+  value = aws_iam_policy.dynamodb_table_access.arn
+}
