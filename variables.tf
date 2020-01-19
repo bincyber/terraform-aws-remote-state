@@ -37,4 +37,3 @@ variable "iam_group_name_ro_access" {
   description = "the name of the IAM group that will have read-only access"
   default     = "terraform_ro_access"
 }
-
