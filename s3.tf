@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "logs_bucket" {
 }
 
 resource "aws_s3_bucket" "remote_state_bucket" {
-  bucket = "${var.s3_bucket_name}"
+  bucket = var.s3_bucket_name
   acl    = "private"
 
   /*
@@ -25,21 +25,22 @@ resource "aws_s3_bucket" "remote_state_bucket" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = "${aws_kms_key.encryption_key.key_id}"
+        kms_master_key_id = aws_kms_key.encryption_key.key_id
         sse_algorithm     = "aws:kms"
       }
     }
   }
 
   logging {
-    target_bucket = "${aws_s3_bucket.logs_bucket.id}"
+    target_bucket = aws_s3_bucket.logs_bucket.id
     target_prefix = "logs/"
   }
 
-  tags {
+  tags = {
     Name      = "Terraform Remote State bucket"
-    Env       = "${var.aws_environment}"
+    Env       = var.aws_environment
     Comment   = "used to store Terraform state files"
     Terraform = "True"
   }
 }
+
